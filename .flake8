@@ -1,0 +1,10 @@
+[flake8]
+exclude =
+  .git,
+  __pycache__,
+  env,
+  **/migrations/**.py
+count = True
+
+# matches black settings
+max-line-length = 120
