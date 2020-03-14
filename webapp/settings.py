@@ -42,7 +42,9 @@ INSTALLED_APPS = [
     "django.contrib.messages",
     "django.contrib.staticfiles",
     "django_extensions",
+    "django_celery_beat",
     "colony.apps.ColonyConfig",
+    "detective.apps.DetectiveConfig",
 ]
 
 MIDDLEWARE = [
@@ -126,3 +128,18 @@ DEFAULT_FILE_STORAGE = "storages.backends.s3boto3.S3Boto3Storage"
 AWS_ACCESS_KEY_ID = config("AWS_ACCESS_KEY_ID")
 AWS_SECRET_ACCESS_KEY = config("AWS_SECRET_ACCESS_KEY")
 AWS_STORAGE_BUCKET_NAME = config("AWS_STORAGE_BUCKET_NAME")
+
+# Celery
+CELERY_BROKER = config("CELERY_BROKER", "redis://localhost")
+
+CELERY_TASK_SERIALIZER = "pickle"
+CELERY_ACCEPT_CONTENT = ["pickle"]
+
+# App Settings
+MOTION_DETECTOR_PHASH_THRESHOLD = config(
+    "MOTION_DETECTOR_PHASH_THRESHOLD", 10, cast=int
+)
+
+VIDEO_SOURCE = config("VIDEO_SOURCE", "http://localhost:5080/LiveApp/streams/tk.m3u8")
+
+TARGET_OBJECT = config("TARGET_OBJECT", "person")
