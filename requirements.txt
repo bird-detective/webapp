@@ -7,7 +7,7 @@ backcall==0.1.0
 billiard==3.6.3.0
 boto3==1.12.19
 botocore==1.15.19
-celery==4.4.1
+celery==5.2.2
 certifi==2019.11.28
 cfgv==3.1.0
 chardet==3.0.4
